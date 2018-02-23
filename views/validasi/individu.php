@@ -50,9 +50,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'kartik\grid\ActionColumn',
-                'template' => '{view}',
+                'template' => '{view} {post}',
                 'noWrap' => true,
                 'vAlign'=>'top',
+                'visibleButtons'=> [
+                    'post' => function($model){
+                        if($model->post === 0) return true;
+                        return false;
+                    }
+                ],
                 'buttons' => [
                         'update' => function ($url, $model) {
                           return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url,
@@ -64,6 +70,18 @@ $this->params['breadcrumbs'][] = $this->title;
                                  // 'data-confirm' => "Yakin menghapus ini?",
                                  // 'data-method' => 'POST',
                                  // 'data-pjax' => 1
+                              ]);
+                        },
+                        'post' => function ($url, $model) {
+                          return Html::a('<span class="glyphicon glyphicon-check"></span>', $url,
+                              [  
+                                 'title' => 'Posting',
+                                //  'data-toggle'=>"modal",
+                                //  'data-target'=>"#myModal",
+                                //  'data-title'=> "Post",                                 
+                                 'data-confirm' => "Data yang sudah diposting tidak dapat diubah. Anda yakin?",
+                                 'data-method' => 'POST',
+                                 'data-pjax' => 1
                               ]);
                         },
                         'view' => function ($url, $model) {

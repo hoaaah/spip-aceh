@@ -25,11 +25,22 @@ $session = Yii::$app->session;
         // 'data-title'=>"Tambah Data Survei Awal"
     ]) ?>
 
-    <?= $session->has('res_id') && \app\models\RespondenKuisionerAwal::findOne($session['res_id'])['post'] === 0 ? Html::a('Posting Data', ['posting'], [
-        'class' => 'btn btn-danger pull-right',
-        'data-method' => 'POST',
-        'data-confirm' => 'Data yang sudah diposting tidak dapat diubah lagi. Anda Yakin?'
-    ]) : "" ?>
+    <?= $session->has('res_id') ? 
+        Html::a('<i class="glyphicon glyphicon-print"></i> Cetak Kuisioner', ['/validasi/view', 'id' => $session['res_id']], [
+            'class' => 'btn btn-info pull-right',
+            // 'data-method' => 'POST',
+            // 'data-confirm' => 'Data yang sudah diposting tidak dapat diubah lagi. Anda Yakin?'
+        ]) 
+    : "" ?>
+
+    <?= $session->has('res_id') && \app\models\RespondenKuisionerAwal::findOne($session['res_id'])['post'] === 0 ? 
+        Html::a('<i class="glyphicon glyphicon-check"></i> Posting Data', ['posting'], [
+            'class' => 'btn btn-danger pull-right',
+            'data-method' => 'POST',
+            'data-confirm' => 'Data yang sudah diposting tidak dapat diubah lagi. Anda Yakin?'
+        ]) 
+    : "" ?>
+
 </p>
 
 <?php 
