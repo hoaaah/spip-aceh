@@ -74,6 +74,7 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; Perwakilan BPKP Aceh <?= date('Y') ?></p>
+        <p class="pull-right"> <a class="btn btn-xs btn-default" href="https://belajararief.com" target="_BLANK" ><i class="fa fa-envelope"></i> @hoaaah</a> </p>
     </div>
 </footer>
 

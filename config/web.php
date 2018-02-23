@@ -5,7 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'spip',
-    'name' => 'AssPIP',
+    'name' => 'AssesPIP v0.1.0',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
