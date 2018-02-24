@@ -50,16 +50,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'kartik\grid\ActionColumn',
-                'template' => '{view} {post}',
+                'template' => '{view} {post} {validate}',
                 'noWrap' => true,
                 'vAlign'=>'top',
                 'visibleButtons'=> [
                     'post' => function($model){
                         if($model->post === 0) return true;
                         return false;
-                    }
+                    },
+                    'validate' => function($model){
+                        if($model->post === 1) return true;
+                        return false;
+                    },
                 ],
                 'buttons' => [
+                    
                         'update' => function ($url, $model) {
                           return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url,
                               [  
@@ -72,6 +77,23 @@ $this->params['breadcrumbs'][] = $this->title;
                                  // 'data-pjax' => 1
                               ]);
                         },
+                        'validate' => function ($url, $model) {
+                            $validasi = \app\models\KuisionerAwalValidasi::findOne(['responden_id' => $model->id]);
+                            $iconColor = "btn-default";
+                            if($validasi) $iconColor = "btn-success";
+                            return Html::a('<span class="glyphicon glyphicon-refresh fa-spin"></span>', $url,
+                                [  
+                                    'class' => "btn btn-xs $iconColor",
+                                    'id' => 'validate-'.$model->id,
+                                    'title' => 'Validasi',
+                                    //  'data-toggle'=>"modal",
+                                    //  'data-target'=>"#myModal",
+                                    //  'data-title'=> "Post",                                 
+                                    'data-confirm' => "Data akan divalidasi. Mungkin membutuhkan waktu agak lama. Anda yakin?",
+                                    'data-method' => 'POST',
+                                    'data-pjax' => 1
+                                ]);
+                          },
                         'post' => function ($url, $model) {
                           return Html::a('<span class="glyphicon glyphicon-check"></span>', $url,
                               [  
@@ -124,6 +146,10 @@ $this->registerJs(<<<JS
             modal.find('.modal-body').html(data)
         });
     })
+
+    // $("a[id^='validate-']").on("click", function(event){
+    //     $(this).addClass
+    // })
 JS
 );
 ?>

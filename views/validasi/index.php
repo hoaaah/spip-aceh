@@ -11,29 +11,17 @@ $this->params['breadcrumbs'][] = $this->title;
 <h1>survaiawal/index</h1>
 
 <p>
-    <?php /* Html::a ('Tambah Survai Awal', ['tambah-responden'], [
-        'class' => 'btn btn-default btn-md',
-        'data-toggle'=>"modal",
-        'data-target'=>"#myModal",
-        'data-title'=>"Tambah Data Survei Awal"
-    ]) */ ?>
     <?= Html::a ('Kuisioner Individu', ['individu'], [
         'class' => 'btn btn-default btn-md',
-        // 'data-toggle'=>"modal",
-        // 'data-target'=>"#myModal",
-        // 'data-title'=>"Tambah Data Survei Awal"
     ]) ?>
     <?= Html::a ('Form 2A', ['form2a'], [
         'class' => 'btn btn-default btn-md',
-        // 'data-toggle'=>"modal",
-        // 'data-target'=>"#myModal",
-        // 'data-title'=>"Tambah Data Survei Awal"
+    ]) ?>
+    <?= Html::a ('Form 2A Tervalidasi', ['form2avalidasi'], [
+        'class' => 'btn btn-default btn-md',
     ]) ?>
     <?= Html::a ('Form 2B', ['form2b'], [
         'class' => 'btn btn-default btn-md',
-        // 'data-toggle'=>"modal",
-        // 'data-target'=>"#myModal",
-        // 'data-title'=>"Tambah Data Survei Awal"
     ]) ?>
 </p>
 

@@ -32,6 +32,24 @@ CREATE TABLE `kuisioner_awal` (
   CONSTRAINT `kuisioner_awal_ibfk_2` FOREIGN KEY (`responden_id`) REFERENCES `responden_kuisioner_awal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
+/*Table structure for table `kuisioner_awal_validasi` */
+
+DROP TABLE IF EXISTS `kuisioner_awal_validasi`;
+
+CREATE TABLE `kuisioner_awal_validasi` (
+  `id` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `tahun` year(4) DEFAULT NULL,
+  `responden_id` varchar(100) COLLATE latin1_general_ci DEFAULT NULL,
+  `pemda_id` varchar(10) COLLATE latin1_general_ci DEFAULT NULL,
+  `survai_awal_id` int(3) DEFAULT NULL,
+  `p_id` varchar(50) COLLATE latin1_general_ci DEFAULT NULL,
+  `jawaban` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `survai_awal_id` (`survai_awal_id`),
+  KEY `responden_id` (`responden_id`),
+  CONSTRAINT `kuisioner_awal_validasi_ibfk_1` FOREIGN KEY (`id`) REFERENCES `kuisioner_awal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
 /*Table structure for table `ref_sub_unsur` */
 
 DROP TABLE IF EXISTS `ref_sub_unsur`;
@@ -141,14 +159,14 @@ DROP TABLE IF EXISTS `rekapitulasi_survai_awal`;
 /*!50001 DROP TABLE IF EXISTS `questions_list` */;
 /*!50001 DROP VIEW IF EXISTS `questions_list` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `questions_list` AS select `c`.`kd_unsur` AS `kd_unsur`,`c`.`name` AS `nama_unsur`,`b`.`kd_sub_unsur` AS `kd_sub_unsur`,`b`.`id` AS `id_sub_unsur`,`b`.`name` AS `nama_sub_unsur`,`a`.`id` AS `id`,`a`.`p_id` AS `p_id`,`a`.`pertanyaan` AS `pertanyaan` from ((`ref_unsur` `c` join `ref_sub_unsur` `b` on((`b`.`kd_unsur` = `c`.`kd_unsur`))) join `ref_survai_awal` `a` on((`a`.`sub_unsur_id` = `b`.`id`))) order by `a`.`id` */;
+/*!50001 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `questions_list` AS select `c`.`kd_unsur` AS `kd_unsur`,`c`.`name` AS `nama_unsur`,`b`.`kd_sub_unsur` AS `kd_sub_unsur`,`b`.`id` AS `id_sub_unsur`,`b`.`name` AS `nama_sub_unsur`,`a`.`id` AS `id`,`a`.`p_id` AS `p_id`,`a`.`pertanyaan` AS `pertanyaan` from ((`ref_unsur` `c` join `ref_sub_unsur` `b` on((`b`.`kd_unsur` = `c`.`kd_unsur`))) join `ref_survai_awal` `a` on((`a`.`sub_unsur_id` = `b`.`id`))) order by `a`.`id` */;
 
 /*View structure for view rekapitulasi_survai_awal */
 
 /*!50001 DROP TABLE IF EXISTS `rekapitulasi_survai_awal` */;
 /*!50001 DROP VIEW IF EXISTS `rekapitulasi_survai_awal` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rekapitulasi_survai_awal` AS (select `c`.`id` AS `id`,`c`.`name` AS `name`,`b`.`p_id` AS `p_id`,`b`.`pertanyaan` AS `pertanyaan`,`a`.`responden_id` AS `responden_id`,`a`.`jawaban` AS `jawaban` from ((`kuisioner_awal` `a` join `ref_survai_awal` `b` on((`a`.`survai_awal_id` = `b`.`id`))) join `ref_sub_unsur` `c` on((`b`.`sub_unsur_id` = `c`.`id`)))) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `rekapitulasi_survai_awal` AS (select `c`.`id` AS `id`,`c`.`name` AS `name`,`b`.`p_id` AS `p_id`,`b`.`pertanyaan` AS `pertanyaan`,`a`.`responden_id` AS `responden_id`,`a`.`jawaban` AS `jawaban` from ((`kuisioner_awal` `a` join `ref_survai_awal` `b` on((`a`.`survai_awal_id` = `b`.`id`))) join `ref_sub_unsur` `c` on((`b`.`sub_unsur_id` = `c`.`id`)))) */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
