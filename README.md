@@ -66,10 +66,6 @@ return [
 ];
 ```
 
-### Akses App
-
-Secara default anda dapat mengakses aplikasi pada `http://localhost/spip/web`. Namun untuk kenyamanan penggunaan anda dapat membuat alias pada konfigurasi apache anda.
-
 ### Parameter
 
 Aplikasi menyimpan parameter Pemda dan Unit Kerja pada file konfigurasi, bukan database.
@@ -97,6 +93,39 @@ return [
 ];
 
 ```
+
+### User Configuration
+
+Aplikasi menyimpan konfigurasi user pada file, bukan database.
+
+Ubah file `models/user.php` dan ubah username dan password anda. for example:
+
+```php
+    private static $users = [
+        '100' => [
+            'id' => '100',
+            'username' => 'admin',
+            'password' => 'admin',
+            'authKey' => 'test100key',
+            'accessToken' => '100-token',
+        ],
+        '101' => [
+            'id' => '101',
+            'username' => 'demo',
+            'password' => 'demo',
+            'authKey' => 'test101key',
+            'accessToken' => '101-token',
+        ],
+    ];
+
+```
+
+Anda dapat mengubah password admin anda, namun username admin tidak boleh diubah karena username ini yang dapat melakukan validasi. Sedangkan user demo dapat anda ubah sesuai kebutuhan anda.
+
+
+### Akses App
+
+Secara default anda dapat mengakses aplikasi pada `http://localhost/spip/web`. Namun untuk kenyamanan penggunaan anda dapat membuat alias pada konfigurasi apache anda.
 
 ## Creator
 
