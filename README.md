@@ -35,6 +35,20 @@ REQUIREMENTS
 The minimum requirement by this project template that your Web server supports PHP 5.4.0.
 
 
+INSTALLATION
+------------
+
+Unduh aplikasi kemudian copy aplikasi pada folder www/htdocs anda. Kemudian jalankan [Composer](https://getcomposer.org/download/). Update dari terminal dengan perintah berikut.
+
+```
+cd .../spip/
+
+composer update
+```
+
+Restore database `db.sql` pada database anda.
+
+
 CONFIGURATION
 -------------
 
@@ -51,6 +65,10 @@ return [
     'charset' => 'utf8',
 ];
 ```
+
+### Akses App
+
+Secara default anda dapat mengakses aplikasi pada `http://localhost/spip/web`. Namun untuk kenyamanan penggunaan anda dapat membuat alias pada konfigurasi apache anda.
 
 ### Parameter
 
