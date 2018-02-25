@@ -127,6 +127,9 @@ Anda dapat mengubah password admin anda, namun username admin tidak boleh diubah
 
 Secara default anda dapat mengakses aplikasi pada `http://localhost/spip/web`. Namun untuk kenyamanan penggunaan anda dapat membuat alias pada konfigurasi apache anda.
 
+### How to Use
+You can watch **[Full tutorial of this project here](https://www.youtube.com/watch?v=kkORAqOVZ2I)**.
+
 ## Creator
 
 AssessPIP was created by and is maintained by **[Heru Arief Wijaya](http://belajararief.com/)**.
