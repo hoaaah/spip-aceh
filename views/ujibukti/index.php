@@ -5,21 +5,21 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
 
-$this->title = 'Pengisian Kuisioner';
-$this->params['breadcrumbs'][] = 'Survei Awal';
+$this->title = 'Pengisian Kuisioner Lanjutan';
+$this->params['breadcrumbs'][] = 'Pengujian Bukti Maturitas';
 $this->params['breadcrumbs'][] = $this->title;
 $session = Yii::$app->session;
 ?>
 <h1><?= $this->title ?></h1>
 
 <p>
-    <?= Html::a ('Tambah Survai Awal', ['tambah-responden'], [
+    <?= Html::a ('Tambah Survai Lanjutan', ['tambah-responden'], [
         'class' => 'btn btn-default btn-md',
         'data-toggle'=>"modal",
         'data-target'=>"#myModal",
         'data-title'=>"Tambah Data Survei Awal"
     ]) ?>
-    <?= Html::a ('Ubah Survai Saya', ['ubah-survai'], [
+    <?= Html::a ('Ubah Survei Saya', ['ubah-survai'], [
         'class' => 'btn btn-default btn-md',
         // 'data-toggle'=>"modal",
         // 'data-target'=>"#myModal",

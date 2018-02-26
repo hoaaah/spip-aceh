@@ -6,6 +6,7 @@ use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
 
 $this->title = 'Validasi';
+$this->params['breadcrumbs'][] = 'Survei Awal';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <h1>survaiawal/index</h1>
