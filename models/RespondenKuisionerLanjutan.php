@@ -73,4 +73,10 @@ class RespondenKuisionerLanjutan extends \yii\db\ActiveRecord
     {
         return $this->hasMany(KuisionerLanjutan::className(), ['responden_id' => 'id']);
     }
+
+    public function getUnit()
+    {
+        $units = Yii::$app->params['unit'];
+        return \yii\helpers\ArrayHelper::getValue($units, $this->nama_unit);
+    }
 }

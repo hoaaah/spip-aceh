@@ -6,9 +6,9 @@ use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use kartik\widgets\SwitchInput;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\RespondenKuisionerAwal */
-/* @var $form yii\widgets\ActiveForm */
+$this->title = 'Pengisian Kuisioner';
+$this->params['breadcrumbs'][] = 'Survei Awal';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="responden-kuisioner-awal-form">

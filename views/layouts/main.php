@@ -47,11 +47,11 @@ AppAsset::register($this);
             ]],
             ['label' => 'Pengujian Bukti Maturitas', 'visible' => !Yii::$app->user->isGuest, 'items'=> [
                 ['label' => 'Pengisian Kuisioner', 'url' => ['/ujibukti'], 'visible' => !Yii::$app->user->isGuest],
-                ['label' => 'Validasi', 'url' => ['/validasi'], 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->id == 100],
-                ['label' => 'Wawancara', 'url' => ['/validasi'], 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->id == 100],
-                ['label' => 'Unggah Dokumen', 'url' => ['/validasi'], 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->id == 100],
-                ['label' => 'Reviu Dokumen', 'url' => ['/validasi'], 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->id == 100],
-                ['label' => 'Observasi', 'url' => ['/validasi'], 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->id == 100],
+                ['label' => 'Validasi', 'url' => ['/validasilanjutan'], 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->id == 100],
+                // ['label' => 'Wawancara', 'url' => ['/validasi'], 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->id == 100],
+                // ['label' => 'Unggah Dokumen', 'url' => ['/validasi'], 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->id == 100],
+                // ['label' => 'Reviu Dokumen', 'url' => ['/validasi'], 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->id == 100],
+                // ['label' => 'Observasi', 'url' => ['/validasi'], 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->id == 100],
             ]],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]

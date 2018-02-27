@@ -107,7 +107,7 @@ class SurvaiawalController extends \yii\web\Controller
         $model = new \app\models\LoginResponden();
         if ($model->load(Yii::$app->request->post())) {
             if($model->login()){
-                var_dump($model->nip);
+                // var_dump($model->nip);
                 $responden = RespondenKuisionerAwal::findOne(['nip' => $model->nip]);
                 $session = Yii::$app->session;
                 $session['res_id'] = $responden->id;

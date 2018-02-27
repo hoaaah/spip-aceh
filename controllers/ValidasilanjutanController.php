@@ -3,12 +3,12 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\RespondenKuisionerAwal;
+use app\models\RespondenKuisionerLanjutan;
 use app\models\KuisionerAwal;
 use app\models\KuisionerAwalValidasi;
 use app\models\RefSurvaiAwal;
-use app\models\QuestionSearch;
-use app\models\RespondenSearch;
+use app\models\QuestionLanjutanSearch;
+use app\models\RespondenLanjutanSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -21,7 +21,7 @@ use yii\filters\AccessControl;
  */
 
 
-class ValidasiController extends \yii\web\Controller
+class ValidasilanjutanController extends \yii\web\Controller
 {
     private $tahun;
     private $pemda_id;
@@ -37,7 +37,7 @@ class ValidasiController extends \yii\web\Controller
         if($action->id !== 'view'){
             if(Yii::$app->user->identity->username !== 'admin'){
                 Yii::$app->session->setFlash('warning', "You didn't have access.");
-                return $this->redirect(['/survaiawal']);
+                return $this->redirect(['/ujibukti']);
             }
         }
     
@@ -82,7 +82,7 @@ class ValidasiController extends \yii\web\Controller
 
     public function actionIndex()
     {
-        $respondens = RespondenKuisionerAwal::findAll(['tahun' => $this->tahun, 'pemda_id' => $this->pemda_id]);
+        $respondens = RespondenKuisionerLanjutan::findAll(['tahun' => $this->tahun, 'pemda_id' => $this->pemda_id]);
 
         return $this->render('index', [
             'respondens' => $respondens,
@@ -91,10 +91,10 @@ class ValidasiController extends \yii\web\Controller
 
     public function actionForm2a()
     {
-        $searchModel = new QuestionSearch();
+        $searchModel = new QuestionLanjutanSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->pageSize = 0;
-        $respondens = RespondenKuisionerAwal::findAll(['tahun' => $this->tahun, 'pemda_id' => $this->pemda_id, 'post' => 1]);
+        $respondens = RespondenKuisionerLanjutan::findAll(['tahun' => $this->tahun, 'pemda_id' => $this->pemda_id, 'post' => 1]);
 
         return $this->render('form2a', [
             'searchModel' => $searchModel,
@@ -105,10 +105,10 @@ class ValidasiController extends \yii\web\Controller
 
     public function actionForm2avalidasi()
     {
-        $searchModel = new QuestionSearch();
+        $searchModel = new QuestionLanjutanSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->pageSize = 0;
-        $respondens = RespondenKuisionerAwal::findAll(['tahun' => $this->tahun, 'pemda_id' => $this->pemda_id, 'post' => 1]);
+        $respondens = RespondenKuisionerLanjutan::findAll(['tahun' => $this->tahun, 'pemda_id' => $this->pemda_id, 'post' => 1]);
 
         return $this->render('form2avalidasi', [
             'searchModel' => $searchModel,
@@ -119,7 +119,7 @@ class ValidasiController extends \yii\web\Controller
 
     public function actionView($id)
     {
-        $searchModel = new QuestionSearch();
+        $searchModel = new QuestionLanjutanSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->pagination->pageSize = 0;
         $responden = $this->findResponden($id);
@@ -143,12 +143,12 @@ class ValidasiController extends \yii\web\Controller
     {
         $session = Yii::$app->session;
         $session['res_id'] = $id;
-        return $this->redirect(['/survaiawal/kuisioner-awal']);
+        return $this->redirect(['/ujibukti/kuisioner-lanjutan']);
     }
 
     public function actionIndividu()
     {
-        $searchModel = new RespondenSearch();
+        $searchModel = new RespondenLanjutanSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('individu', [
@@ -215,7 +215,7 @@ class ValidasiController extends \yii\web\Controller
 
     protected function findResponden($id)
     {
-        if (($model = RespondenKuisionerAwal::findOne($id)) !== null) {
+        if (($model = RespondenKuisionerLanjutan::findOne($id)) !== null) {
             return $model;
         }
 
