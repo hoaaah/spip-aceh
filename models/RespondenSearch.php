@@ -62,11 +62,12 @@ class RespondenSearch extends RespondenKuisionerAwal
             'tahun' => $this->tahun,
             'kategori_jabatan' => $this->kategori_jabatan,
             'post' => $this->post,
+            'nama_unit' => $this->nama_unit,
         ]);
 
         $query->andFilterWhere(['like', 'id', $this->id])
             ->andFilterWhere(['like', 'pemda_id', $this->pemda_id])
-            ->andFilterWhere(['like', 'nama_unit', $this->nama_unit])
+            // ->andFilterWhere(['like', 'nama_unit', $this->nama_unit])
             ->andFilterWhere(['like', 'nama', $this->nama])
             ->andFilterWhere(['like', 'nip', $this->nip])
             ->andFilterWhere(['like', 'jabatan', $this->jabatan])

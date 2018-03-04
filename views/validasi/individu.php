@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
         // 'showPageSummary'=>true,   
         'columns' => [
             ['class' => 'kartik\grid\SerialColumn'],
-
+            'nama_unit',
             'unit',
             'nama',
             //'nip',
