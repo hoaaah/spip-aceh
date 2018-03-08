@@ -29,7 +29,7 @@ $columns = [
 $columns[] = [
     'header' => 'Y/T',
     'value' => function($model) use($responden){
-        $jawaban = \app\models\KuisionerAwal::findOne(['tahun' => $responden->tahun, 'responden_id' => $responden->id, 'pemda_id' => $responden->pemda_id, 'survai_awal_id' => $model->id]);
+        $jawaban = \app\models\KuisionerLanjutan::findOne(['tahun' => $responden->tahun, 'responden_id' => $responden->id, 'pemda_id' => $responden->pemda_id, 'survai_lanjutan_id' => $model->id]);
         return $jawaban['jawaban'] === 1 ? 'Y' : 'T';
     }
 ];
